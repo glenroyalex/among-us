@@ -1,1 +1,12 @@
-
+[
+  {
+    "version": "v0.1",
+    "date": "2026-06-03",
+    "text": "Initial test build. Basic movement + multiplayer room."
+  },
+  {
+    "version": "v0.2",
+    "date": "2026-06-10",
+    "text": "Added emergency meeting button (no logic yet)."
+  }
+]
