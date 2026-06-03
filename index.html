@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sus Game</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    #updatesModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    #updatesBox {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      text-align: left;
+    }
+    #updatesList {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 10px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sus Game</h1>
+  <p>Simple Among Us–style browser game</p>
 
+  <button id="playBtn">Play</button>
+  <button id="updatesBtn">Updates</button>
+
+  <!-- Updates modal -->
+  <div id="updatesModal">
+    <div id="updatesBox">
+      <h2>Game Updates</h2>
+      <div id="updatesList">
+        Loading updates...
+      </div>
+      <button id="closeUpdates">Close</button>
+    </div>
+  </div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>
