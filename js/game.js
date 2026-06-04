@@ -31,10 +31,11 @@ socket.on("playerDisconnected", (id) => {
   delete players[id];
 });
 
-// Movement controls
+// Your player position
 let x = 400;
 let y = 300;
 
+// Movement controls
 document.addEventListener("keydown", (e) => {
   if (e.key === "w") y -= 5;
   if (e.key === "s") y += 5;
@@ -58,4 +59,3 @@ function draw() {
 }
 
 draw();
-
