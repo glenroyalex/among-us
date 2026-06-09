@@ -1,5 +1,5 @@
 // Connect to your CodeSandbox server
-const socket = io("https://d3c473-3000.csb.app");
+const socket = io("https://among-us-server.onrender.com");
 
 // Canvas setup
 const canvas = document.getElementById("gameCanvas");
