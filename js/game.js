@@ -51,8 +51,12 @@ function draw() {
 
   for (let id in players) {
     const p = players[id];
-    ctx.fillStyle = p.color;
-    ctx.fillRect(p.x, p.y, 30, 30);
+    ctx.drawImage(
+  spriteSheet,
+  sx, sy, sw, sh,
+  p.x, p.y, sw, sh
+);
+
   }
 
   requestAnimationFrame(draw);
