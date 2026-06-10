@@ -46,17 +46,24 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Draw loop
-function draw() {
+ffunction draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (let id in players) {
     const p = players[id];
-    ctx.drawImage(
-  spriteSheet,
-  sx, sy, sw, sh,
-  p.x, p.y, sw, sh
-);
 
+    // Calculate which frame to draw
+    const frameWidth = 64;   // depends on your sprite sheet
+    const frameHeight = 64;  // depends on your sprite sheet
+
+    const sx = p.frame * frameWidth;
+    const sy = p.directionIndex * frameHeight;
+
+    ctx.drawImage(
+      spriteSheet,
+      sx, sy, frameWidth, frameHeight,
+      p.x, p.y, frameWidth, frameHeight
+    );
   }
 
   requestAnimationFrame(draw);
