@@ -1,61 +1,32 @@
-// Connect to your CodeSandbox server
-const socket = io("https://among-us-server.onrender.com");
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiplayer Test</title>
 
-// Canvas setup
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+  <!-- Load socket.io client -->
+  <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
 
-// Store all players
-let players = {};
+  <!-- FIXED: correct path to game.js -->
+  <script src="js/game.js" defer></script>
 
-// When you join, server sends all current players
-socket.on("currentPlayers", (serverPlayers) => {
-  players = serverPlayers;
-});
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-// When a new player joins
-socket.on("newPlayer", (player) => {
-  players[player.id] = player;
-});
+    canvas {
+      background: #222;
+      border: 3px solid #fff;
+    }
+  </style>
+</head>
 
-// When a player moves
-socket.on("playerMoved", (data) => {
-  if (players[data.id]) {
-    players[data.id].x = data.x;
-    players[data.id].y = data.y;
-  }
-});
-
-// When a player disconnects
-socket.on("playerDisconnected", (id) => {
-  delete players[id];
-});
-
-// Your player position
-let x = 400;
-let y = 300;
-
-// Movement controls
-document.addEventListener("keydown", (e) => {
-  if (e.key === "w") y -= 5;
-  if (e.key === "s") y += 5;
-  if (e.key === "a") x -= 5;
-  if (e.key === "d") x += 5;
-
-  socket.emit("move", { x, y });
-});
-
-// Draw loop
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  for (let id in players) {
-    const p = players[id];
-    ctx.fillStyle = p.color;
-    ctx.fillRect(p.x, p.y, 30, 30);
-  }
-
-  requestAnimationFrame(draw);
-}
-
-draw();
+<body>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+</body>
+</html>
