@@ -8,7 +8,7 @@ const ctx = canvas.getContext("2d");
 
 // Sprite sheet
 const sprite = new Image();
-sprite.src = "assets/alien.png"; // <-- your sprite sheet
+sprite.src = "assets/alien_walk.png"; // <-- your 5-frame walk row
 
 // Player object
 const player = {
@@ -25,7 +25,7 @@ const player = {
 
     // Animation
     frame: 0,
-    frameCount: 6,       // <-- you said 6 walk frames
+    frameCount: 5,       // <-- 5 frames in your walk row
     frameTimer: 0,
     frameInterval: 6     // lower = faster animation
 };
@@ -100,11 +100,7 @@ function drawPlayer() {
 
     // Source frame on sprite sheet
     const sx = player.frame * player.width;
-    const sy = player.height * 1; 
-    // ^^^ IMPORTANT:
-    // This selects the WALK ROW.
-    // If your walk row is not the second row,
-    // change the "* 1" to the correct row index.
+    const sy = 0; // <-- row 0 (only row)
 
     if (player.facing === "left") {
         ctx.scale(-1, 1);
